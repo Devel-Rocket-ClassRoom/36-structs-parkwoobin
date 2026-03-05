@@ -56,7 +56,7 @@ struct RecipeCard
         Console.WriteLine("재료:");
         foreach (var ingredient in Ingredients)
         {
-            Console.WriteLine($"- {ingredient.Name}: {1 * ingredient.Amount}{ingredient.Unit}");
+            Console.WriteLine($"- {ingredient.Name}: {ingredient.Amount}{ingredient.Unit}");
         }
     }
 
