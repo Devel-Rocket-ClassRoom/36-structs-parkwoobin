@@ -15,7 +15,8 @@ Console.WriteLine("=== 원본 레시피 ===");
 recipe.PrintRecipe();
 
 Console.WriteLine("\n=== 4인분 레시피 ===");
-recipe.ScaleRecipe(4);
+RecipeCard scaledRecipe = recipe.ScaleRecipe(4);
+scaledRecipe.PrintRecipe();
 
 
 
@@ -60,17 +61,12 @@ struct RecipeCard
         }
     }
 
-    public void ScaleRecipe(int newServings)
+    public RecipeCard ScaleRecipe(int newServings)
     {
-        double change = (double)newServings / Servings;
-        Console.WriteLine($"[{Name}] ({newServings}인분)");
-        Console.WriteLine("재료:");
         for (int i = 0; i < Ingredients.Length; i++)
         {
-            Ingredients[i].Amount *= change;
-            Console.WriteLine($"- {Ingredients[i].Name}: {Ingredients[i].Amount}{Ingredients[i].Unit}");
+            Ingredients[i].Amount *= ((double)newServings / Servings);
         }
-        Servings = newServings;
+        return this;
     }
-
 }
